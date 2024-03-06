@@ -1,0 +1,39 @@
+<div class="chat-container">
+  <div class="chat-messages">
+    <div class="my-2">
+      <!-- Chat Messages -->
+      <app-chat-message
+        text="Escribe el texto que quieres que revise"
+      />
+      @for (message of messages(); track $index) {
+        @if ( message.isGpt ) {
+          <app-chat-message [text]="message.text"/>
+        } @else {
+          <app-my-message message [text]="message.text"/>
+        }
+      }
+    </div>
+
+    @if ( isLoading() ) {
+      <app-typing-loader/>
+    }
+  </div>
+
+  <!-- MessageBox -->
+  <!-- <app-text-message-box
+    placeholder="Escribe aquí lo que deseas"
+    (onMessge)="handleMessage($event)"
+  /> -->
+
+  <!-- <app-text-message-box-file
+    placeholder="Escribe aquí lo que deseas"
+    (onMessge)="handleMessageWithFile($event)"
+  /> -->
+
+  <app-text-message-box-select
+    placeholder="Escribe aquí lo que deseas"
+    [options]="[{ id: '1', text: 'Uno' }, { id: '2', text: 'Dos' }]"
+    (onMessge)="handleMessageWithSelect($event)"
+  />
+
+</div>
