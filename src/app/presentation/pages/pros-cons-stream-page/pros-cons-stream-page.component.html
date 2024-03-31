@@ -1,1 +1,30 @@
-<p>pros-cons-stream-page works!</p>
+<div class="chat-container">
+  <div #chatMessages class="chat-messages">
+    <div class="my-2">
+      <!-- Chat Messages -->
+      <app-chat-message
+        text="¿Qué deseas comparar? - Stream"
+      />
+      @for (message of messages(); track message.text) {
+        @if ( message.isGpt ) {
+          <app-chat-message [text]="message.text"/>
+        } @else {
+          <app-my-message message [text]="message.text"/>
+        }
+      }
+    </div>
+
+    @if ( isLoading() ) {
+      <app-typing-loader/>
+    }
+  </div>
+
+  <!-- MessageBox -->
+  <app-text-message-box
+    placeholder="Escribe aquí lo que deseas"
+    (onMessge)="handleMessage($event)"
+  />
+
+
+</div>
+

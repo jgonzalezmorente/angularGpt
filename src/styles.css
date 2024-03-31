@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 html, body {
+
   background-color: #000000;
   color: white;
   font-family: 'Open Sans', sans-serif;
@@ -42,7 +43,20 @@ em {
 
 .chat-messages {
   @apply flex flex-col h-full overflow-x-auto mb-4 overflow-auto;
+  scroll-behavior: smooth;
+  scrollbar-width: unset;
 }
+
+.chat-messages::-webkit-scrollbar {
+  width: 25px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  border: 10px solid transparent;
+  box-shadow: inset 0 0 0 10px white;
+  border-radius: 4rem;
+}
+
 
 /* Animations */
 
