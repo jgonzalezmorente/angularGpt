@@ -19,7 +19,7 @@ export const orthographyUseCase = async ( prompt: string ) => {
       ...data
     }
   } catch (error) {
-    console.log( error );
+    console.log(error);
     return {
       ok: false,
       userScore: 0,
